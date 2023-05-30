@@ -1,0 +1,11 @@
+{
+  "name": "kss-docker-swarm-green",
+  "version": "1.0.0",
+  "description": "KSS Docker Swarm Test Application Green",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bhavya Jain",
+  "license": "ISC"
+}

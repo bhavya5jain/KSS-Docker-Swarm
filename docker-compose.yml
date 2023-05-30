@@ -1,0 +1,58 @@
+version: '3.4'
+
+services:
+  blue-app:
+    image: 192.168.0.136:5000/blue-app:0.1.0
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 250M
+        reservations:
+          cpus: '0.1'
+          memory: 100M
+    environment:
+      - PORT=3000
+      - env=dev
+    ports:
+      - '8000:3000'
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3001/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 1m
+    networks:
+      - demo-overlay-network
+  green-app:
+    image: 192.168.0.136:5000/green-app:0.1.0
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 250M
+        reservations:
+          cpus: '0.1'
+          memory: 100M
+    environment:
+      - PORT=3000
+      - env=dev
+    ports:
+      - '8001:3000'
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3001/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 1m
+    networks:
+      - demo-overlay-network
+
+networks:
+  demo-overlay-network:
