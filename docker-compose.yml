@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   blue-app:
-    image: 192.168.0.136:5000/blue-app:0.1.0
+    image: blue-app:0.1.0
     deploy:
       replicas: 3
       restart_policy:
@@ -28,7 +28,7 @@ services:
     networks:
       - demo-overlay-network
   green-app:
-    image: 192.168.0.136:5000/green-app:0.1.0
+    image: green-app:0.1.0
     deploy:
       replicas: 2
       restart_policy:
