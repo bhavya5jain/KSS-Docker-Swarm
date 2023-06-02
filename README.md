@@ -4,7 +4,7 @@ This is a short demo on [Docker Swarm](https://docs.docker.com/engine/swarm/). W
 Note: I am deploying in a local linux machine. However, same instructions should work in Mac as well.
 
 ## Requirements
-- Docker version 23.0.4
+- Docker version 23+
 
 ## Steps to deploy 
 
@@ -35,13 +35,13 @@ docker stack deploy -c docker-compose.yml demo-app
 ```
 
 ## Verify that the deployment was successful
-- Check if the services were deployed successfully in the docker swarm cluster
+### 1. Check if the services were deployed successfully in the docker swarm cluster
 ```sh 
 docker service ls
 ```
 Note: It takes about a minute to deploy successfully and health check to pass
 
-- Try to run access the applications
+### 2. Try to run access the applications
 ```sh
 # Blue application
 curl localhost:8000
